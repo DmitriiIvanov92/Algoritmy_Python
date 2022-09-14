@@ -25,28 +25,29 @@ users_account = {
 }
 
 
+# Сложность O(n)
 def authorization_1(user, user_name, user_pass):
-    for key, value in user.items():
-        if key == user_name:
-            if value['password'] == user_pass and value['activation']:
+    for key, value in user.items():  # O(n)
+        if key == user_name:  # O(1)
+            if value['password'] == user_pass and value['activation']:  # O(1)
                 return 'Доступ разрешен!'
-            elif value['password'] == user_pass and not value['activation']:
+            elif value['password'] == user_pass and not value['activation']:  # O(1)
                 return 'Необходимо активировать учетную запись!'
-            elif value['password'] != user_pass:
+            elif value['password'] != user_pass:  # O(1)
                 return 'Не верный пароль!'
 
         return 'Пользователя не существует!'
 
 
+# Сложность O(1)
 def authorization_2(user, user_name, user_pass):
-    if user.get(user_name):
-        if user[user_name]['password'] == user_pass and user[user_name]['activation']:
+    if user.get(user_name):  # O(1)
+        if user[user_name]['password'] == user_pass and user[user_name]['activation']:  # O(1)
             return 'Доступ разрешен!'
-        elif user[user_name]['password'] == user_pass and not user[user_name]['activation']:
+        elif user[user_name]['password'] == user_pass and not user[user_name]['activation']:  # O(1)
             return 'Необходимо активировать учетную запись!'
-        elif user[user_name]['password'] != user_pass:
+        elif user[user_name]['password'] != user_pass:  # O(1)
             return 'Не верный пароль!'
-
     else:
         return 'Пользователя не существует!'
 
@@ -56,4 +57,3 @@ print(authorization_1(users_account, 'user6', '1111'))
 
 print(authorization_2(users_account, 'user1', '12345'))
 print(authorization_2(users_account, 'user6', '1111'))
-

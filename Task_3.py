@@ -39,11 +39,11 @@ print(sorted_1(company_value))
 
 
 # Способ №2:
-# Cложность: O(N*log N)  7 + N*log N + N
+# Cложность: O(N*log N)  n + n*log n + 1
 def sorted_2(company):
-    list_company = list(company.items())  # O(7))
-    list_company.sort(key=lambda i: i[1], reverse=True)  # O(N*log N)
-    for i in range(3):  # O(N)
+    list_company = list(company.items())  # O(n)
+    list_company.sort(key=lambda i: i[1], reverse=True)  # O(N*log n)
+    for i in range(3):  # O(1)
         print(f"{list_company[i][0]}: {list_company[i][1]}")
 
 
